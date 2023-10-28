@@ -1,0 +1,8 @@
+C:\Users\Eliza\OneDrive\Рабочий стол\KSTU_3\Autumn\Declarative Programming\Project2\Project2\obj\Debug\net6.0\Project2.csproj.AssemblyReference.cache
+C:\Users\Eliza\OneDrive\Рабочий стол\KSTU_3\Autumn\Declarative Programming\Project2\Project2\obj\Debug\net6.0\Project2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eliza\OneDrive\Рабочий стол\KSTU_3\Autumn\Declarative Programming\Project2\Project2\obj\Debug\net6.0\Project2.AssemblyInfoInputs.cache
+C:\Users\Eliza\OneDrive\Рабочий стол\KSTU_3\Autumn\Declarative Programming\Project2\Project2\obj\Debug\net6.0\Project2.AssemblyInfo.cs
+C:\Users\Eliza\OneDrive\Рабочий стол\KSTU_3\Autumn\Declarative Programming\Project2\Project2\obj\Debug\net6.0\Project2.csproj.CoreCompileInputs.cache
+C:\Users\Eliza\OneDrive\Рабочий стол\KSTU_3\Autumn\Declarative Programming\Project2\Project2\obj\Debug\net6.0\Project2.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Eliza\OneDrive\Рабочий стол\KSTU_3\Autumn\Declarative Programming\Project2\Project2\obj\Debug\net6.0\Project2.RazorAssemblyInfo.cache
+C:\Users\Eliza\OneDrive\Рабочий стол\KSTU_3\Autumn\Declarative Programming\Project2\Project2\obj\Debug\net6.0\Project2.RazorAssemblyInfo.cs

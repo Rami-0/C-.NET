@@ -1,0 +1,14 @@
+﻿@model DAL.Entities.TaskProject
+
+<h2>Create Task</h2>
+
+<form asp-action="Create">
+    <!-- Ваши поля ввода для задачи -->
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <!-- Добавьте другие поля, например, статус задачи -->
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

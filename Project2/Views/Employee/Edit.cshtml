@@ -1,0 +1,15 @@
+﻿@model DAL.Entities.Employee
+
+<h2>Edit Employee</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <!-- Ваши поля ввода для сотрудника -->
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <!-- Добавьте другие поля по аналогии -->
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>

@@ -1,0 +1,15 @@
+﻿@model DAL.Entities.Employee
+
+<h2>Create Employee</h2>
+
+<form asp-action="Create">
+    <!-- Ваши поля ввода для сотрудника -->
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <!-- Добавьте другие поля по аналогии -->
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+

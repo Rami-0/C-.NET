@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DAL.Entities.Company>
+<table>
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Name</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Company", new { id = task.Id })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Company", new { id = task.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<a href="@Url.Action("Create", "Company")">Create</a>

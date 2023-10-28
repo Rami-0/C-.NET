@@ -1,0 +1,14 @@
+﻿@model DAL.Entities.Project
+
+<h2>Create Project</h2>
+
+<form asp-action="Create">
+    <!-- Ваши поля ввода для проекта -->
+    <div class="form-group">
+        <label asp-for="ProjectName"></label>
+        <input asp-for="ProjectName" class="form-control" />
+    </div>
+    <!-- Добавьте другие поля по аналогии -->
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
