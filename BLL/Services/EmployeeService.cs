@@ -1,26 +1,44 @@
 ﻿using DAL.Entities;
 using DAL.Repositories;
+using System;
 using System.Collections.Generic;
 
 namespace BLL.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        private readonly IGenericRepository<Employee> _repository;
+        private readonly IGenericRepository<Employee> _employeeRepository;
 
-        public EmployeeService(IGenericRepository<Employee> repository)
+        public EmployeeService(IGenericRepository<Employee> employeeRepository)
         {
-            _repository = repository;
+            _employeeRepository = employeeRepository;
         }
 
-        public IEnumerable<Employee> GetAllEmployees() => _repository.GetAll();
 
-        public Employee GetEmployeeById(int id) => _repository.GetById(id);
+        public IEnumerable<Company> GetCompaniesByEmployeeId(int employeeId)
+        {
+            var employee = _employeeRepository.GetById(employeeId);
 
-        public void AddEmployee(Employee employee) => _repository.Add(employee);
+            if (employee == null)
+            {
+                throw new InvalidOperationException("Сотрудник не найден");
+            }
 
-        public void UpdateEmployee(Employee employee) => _repository.Update(employee);
+            // Получите компании, связанные с этим сотрудником
+            var companies = employee.Companies;
 
-        public void DeleteEmployee(int id) => _repository.Delete(id);
+            return companies;
+        }
+
+
+        public IEnumerable<Employee> GetAllEmployees() => _employeeRepository.GetAll();
+
+        public Employee GetEmployeeById(int id) => _employeeRepository.GetById(id);
+
+        public void AddEmployee(Employee employee) => _employeeRepository.Add(employee);
+
+        public void UpdateEmployee(Employee employee) => _employeeRepository.Update(employee);
+
+        public void DeleteEmployee(int id) => _employeeRepository.Delete(id);
     }
 }

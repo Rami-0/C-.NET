@@ -172,8 +172,16 @@
     </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CompanyRepository.cs" />
+    <Compile Include="Repositories\EmployeeRepository.cs" />
+    <Compile Include="Repositories\ICompanyRepository.cs" />
+    <Compile Include="Repositories\IEmployeeRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="Repositories\IProjectRepository.cs" />
+    <Compile Include="Repositories\ITaskProjectRepository.cs" />
+    <Compile Include="Repositories\ProjectRepository.cs" />
+    <Compile Include="Repositories\TaskProjectRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

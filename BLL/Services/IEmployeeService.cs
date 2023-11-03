@@ -5,6 +5,7 @@ namespace BLL.Services
 {
     public interface IEmployeeService
     {
+        IEnumerable<Company> GetCompaniesByEmployeeId(int employeeId);
         IEnumerable<Employee> GetAllEmployees();
         Employee GetEmployeeById(int id);
         void AddEmployee(Employee employee);

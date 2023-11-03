@@ -11,6 +11,7 @@ namespace DAL.Entities
         public string Email { get; set; }
         public ICollection<TaskProject> CreatedTasks { get; set; }
         public ICollection<TaskProject> AssignedTasks { get; set; }
+        public ICollection<Company> Companies { get; set; }
         public int CompanyId { get; set; }
         public Company Company { get; set; }
     }
