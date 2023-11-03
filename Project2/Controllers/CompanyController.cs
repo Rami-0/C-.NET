@@ -8,16 +8,16 @@ namespace Project2.Controllers
 {
     public class CompanyController : Controller
     {
-        private readonly ICompanyService _service;
+        private readonly ICompanyService _companyService;
 
-        public CompanyController(ICompanyService service)
+        public CompanyController(ICompanyService companyService)
         {
-            _service = service;
+            _companyService = companyService;
         }
 
         public IActionResult Index()
         {
-            var companies = _service.GetAllCompanies().ToList();
+            var companies = _companyService.GetAllCompanies().ToList();
             return View(companies);
         }
 
@@ -31,7 +31,7 @@ namespace Project2.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.AddCompany(company);
+                _companyService.AddCompany(company);
                 return RedirectToAction("Index");
             }
             return View(company);
@@ -39,7 +39,7 @@ namespace Project2.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var company = _service.GetCompanyById(id);
+            var company = _companyService.GetCompanyById(id);
             if (company == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace Project2.Controllers
             }
             if (ModelState.IsValid)
             {
-                _service.UpdateCompany(company);
+                _companyService.UpdateCompany(company);
                 return RedirectToAction("Index");
             }
             return View(company);
@@ -64,7 +64,7 @@ namespace Project2.Controllers
 
         public IActionResult Delete(int id)
         {
-            var company = _service.GetCompanyById(id);
+            var company = _companyService.GetCompanyById(id);
             if (company == null)
             {
                 return NotFound();
@@ -75,9 +75,33 @@ namespace Project2.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            _service.DeleteCompany(id);
+            _companyService.DeleteCompany(id);
             return RedirectToAction("Index");
         }
-      
+        public IActionResult Employees(int id)
+        {
+            // Получите список сотрудников для определенной компании по id
+            var employees = _companyService.GetEmployeesByCompanyId(id);
+            return View(employees);
+        }
+
+        [HttpPost]
+        public IActionResult AddEmployee(int companyId, int employeeId)
+        {
+            // Добавьте сотрудника к компании
+            _companyService.AddEmployeeToCompany(companyId, employeeId);
+            return RedirectToAction("Employees", new { id = companyId });
+        }
+
+        [HttpPost]
+        public IActionResult RemoveEmployee(int companyId, int employeeId)
+        {
+            // Удалите сотрудника из компании
+            _companyService.RemoveEmployeeFromCompany(companyId, employeeId);
+            return RedirectToAction("Employees", new { id = companyId });
+        }
+
     }
+
 }
+

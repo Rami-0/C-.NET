@@ -23,6 +23,31 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "company_employees",
+        pattern: "Company/Employees/{id?}",
+        defaults: new { controller = "Company", action = "Employees" }
+    );
+
+    endpoints.MapControllerRoute(
+        name: "company_add_employee",
+        pattern: "Company/AddEmployee/{companyId?}",
+        defaults: new { controller = "Company", action = "AddEmployee" }
+    );
+
+    endpoints.MapControllerRoute(
+        name: "company_remove_employee",
+        pattern: "Company/RemoveEmployee/{companyId?}",
+        defaults: new { controller = "Company", action = "RemoveEmployee" }
+    );
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

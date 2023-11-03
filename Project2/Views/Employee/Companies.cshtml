@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Company>
+
+<h2>Companies for Employee</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <!-- Добавьте другие заголовки, если необходимо -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var company in Model)
+        {
+            <tr>
+                <td>@company.Name</td>
+                <!-- Отобразите другую информацию о компании, если необходимо -->
+            </tr>
+        }
+    </tbody>
+</table>
+

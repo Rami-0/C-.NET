@@ -7,52 +7,32 @@ namespace Project2.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly IEmployeeService _service;
+        private readonly IEmployeeService _employeeService;
+        private readonly ICompanyService _companyService;
 
-        public EmployeeController(IEmployeeService service)
+        public EmployeeController(IEmployeeService employeeService, ICompanyService companyService)
         {
-            _service = service;
+            _employeeService = employeeService;
+            _companyService = companyService;
         }
 
         // Список всех сотрудников
         public IActionResult Index()
         {
-            var employees = _service.GetAllEmployees().ToList();
+            var employees = _employeeService.GetAllEmployees().ToList();
             return View(employees);
         }
-
-        // Форма создания сотрудника
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // Создание сотрудника
         [HttpPost]
         public IActionResult Create(Employee employee)
         {
             if (ModelState.IsValid)
             {
-                _service.AddEmployee(employee);
+                _employeeService.AddEmployee(employee);
                 return RedirectToAction("Index");
             }
 
             return View(employee);
         }
-
-        // Форма редактирования сотрудника
-        public IActionResult Edit(int id)
-        {
-            var employee = _service.GetEmployeeById(id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
-
-            return View(employee);
-        }
-
-        // Редактирование сотрудника
         [HttpPost]
         public IActionResult Edit(int id, Employee employee)
         {
@@ -63,20 +43,8 @@ namespace Project2.Controllers
 
             if (ModelState.IsValid)
             {
-                _service.UpdateEmployee(employee);
+                _employeeService.UpdateEmployee(employee);
                 return RedirectToAction("Index");
-            }
-
-            return View(employee);
-        }
-
-        // Форма удаления сотрудника
-        public IActionResult Delete(int id)
-        {
-            var employee = _service.GetEmployeeById(id);
-            if (employee == null)
-            {
-                return NotFound();
             }
 
             return View(employee);
@@ -86,8 +54,65 @@ namespace Project2.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            _service.DeleteEmployee(id);
+            _employeeService.DeleteEmployee(id);
             return RedirectToAction("Index");
+        }
+        public IActionResult Companies(int id)
+        {
+            // Получите список компаний, в которых работает сотрудник по id
+            var companies = _employeeService.GetCompaniesByEmployeeId(id);
+            return View(companies);
+        }
+        [HttpPost]
+        public IActionResult AddToCompany(int employeeId, int companyId)
+        {
+            // Получите сотрудника по employeeId
+            var employee = _employeeService.GetEmployeeById(employeeId);
+
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            // Получите компанию по companyId
+            // Получите компанию по companyId
+            var company = _companyService.GetCompanyById(companyId);
+
+            if (company == null)
+            {
+                return NotFound();
+            }
+
+            // Установите отношение между сотрудником и компанией
+            company.Employees.Add(employee);
+
+            // Сохраните изменения в базе данных
+            _companyService.UpdateCompany(company);
+
+            // Верните ответ или перенаправьтесь, в зависимости от вашего сценария
+
+            return RedirectToAction("Index");
+        }
+
+        // Редактирование сотрудника в компании
+        [HttpPost]
+        public IActionResult EditInCompany(int employeeId, int companyId)
+        {
+            // Получите сотрудника по employeeId
+            var employee = _employeeService.GetEmployeeById(employeeId);
+
+            if (employee == null)
+            {
+                return NotFound();
+            }
+            // Получите компанию по companyId
+            var company = _companyService.GetCompanyById(companyId);
+
+            if (company == null)
+            {
+                return NotFound();
+            }
+            return View();
         }
     }
 }
