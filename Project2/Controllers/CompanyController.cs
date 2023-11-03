@@ -80,4 +80,7 @@ namespace Project2.Controllers
         }
       
     }
+    // TODO: Function to Add employees 
+
+    // TODO: Function to Add projects
 }

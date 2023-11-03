@@ -89,5 +89,9 @@ namespace Project2.Controllers
             _service.DeleteEmployee(id);
             return RedirectToAction("Index");
         }
+
+        // Logic to add task for employee // ..../employee/:id/tasks
+
+        // Logic to submit tasks :: Завершить
     }
 }
