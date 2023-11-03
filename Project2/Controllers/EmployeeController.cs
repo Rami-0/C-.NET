@@ -114,5 +114,9 @@ namespace Project2.Controllers
             }
             return View();
         }
+
+        // Logic to add task for employee // ..../employee/:id/tasks
+
+        // Logic to submit tasks :: Завершить
     }
 }

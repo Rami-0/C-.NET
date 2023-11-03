@@ -7,6 +7,32 @@
     <div class="form-group">
         <label asp-for="Name"></label>
         <input asp-for="Name" class="form-control" />
+
+        <label asp-for="Status"></label>
+        <input asp-for="Status" class="form-control" />
+
+        <label asp-for="Comment"></label>
+        <input asp-for="Comment" class="form-control" />
+
+        <label asp-for="Priority"></label>
+        <select asp-for="Priority" class="form-control" >
+            <option>
+                option 1
+            </option>
+        </select>
+
+        <label asp-for="Author"></label>
+        <input asp-for="Author" class="form-control" />
+
+        <label asp-for="Executor"></label>
+        <input asp-for="Executor" class="form-control" />
+
+        <label asp-for="Project"></label>
+        <select asp-for="Project" class="form-control">
+           <!-- loop the projects -->
+        </select>
+
+
     </div>
     <!-- Добавьте другие поля, например, статус задачи -->
 

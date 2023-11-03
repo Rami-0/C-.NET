@@ -43,6 +43,7 @@ namespace Project2.Controllers
             {
                 return NotFound();
             }
+            // send data about companies and it's employes as parameter
             return View(project);
         }
 
